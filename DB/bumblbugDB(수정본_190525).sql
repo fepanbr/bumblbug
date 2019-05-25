@@ -1,8 +1,3 @@
-alter table fund_tb add (f_d_idx int);
-
-alter table fund_tb add constraint f_d_fk foreign key(f_d_idx) references del_tb (d_dix);
-
-
 create table PJ_TB (
 	pj_idx int auto_increment primary key,
 	pj_title varchar(150) not null,
@@ -113,7 +108,7 @@ create table DEL_TB (
 
 create table PAY_TB (
 	pay_idx int auto_increment primary key,
-	pay_means enum('ī��') not null,
+	pay_means enum('카드') not null,
 	pay_price varchar(45) not null,
 	pay_st date not null,
 	pay_f_idx int not null
@@ -122,7 +117,7 @@ create table PAY_TB (
 create table PAY_INFO_TB (
 	pay_info_idx int auto_increment primary key,
 	pay_u_idx int default null,
-	pay_info_means enum('ī��') default 'ī��',
+	pay_info_means enum('카드') default '카드',
 	card_no varchar(45) default null,
 	card_valid varchar(45) default null,
 	owner_birth varchar(45) default null,
@@ -142,3 +137,35 @@ alter table PAY_INFO_TB add foreign key (pay_u_idx) references USER_TB (u_idx);
 alter table PJ_TB add foreign key (pj_u_idx) references USER_TB (u_idx);
 alter table NOTICE_TB add foreign key (b_pj_idx) references PJ_TB (pj_idx);
 alter table fund_tb add foreign key(f_d_idx) references del_tb (d_idx);
+
+
+create table temp_tb (
+	tp_idx int,
+	tp_title varchar(150),
+	tp_short_title varchar(10),
+	tp_img varchar(100),
+	tp_summary varchar(100),
+	tp_category varchar(45),
+	tp_url varchar(100),
+	tp_search_tag varchar(125),
+	tp_profile_img varchar(100),
+	tp_leader_nm varchar(20),
+	tp_leader_intro mediumtext,
+	tp_leader_loc varchar(10),
+	tp_end_dt date,
+	tp_intro_video varchar(100),
+	tp_u_idx int,
+	tp_story mediumtext,
+	tp_obj_price varchar(45),
+	tp_reg_dt date,
+	tp_ac_no varchar(45),
+	tp_ah varchar(20),
+	tp_bank_nm varchar(20),
+	tp_st enum('작정중','승인대기중','완료'),
+	tp_ah_birth date
+);
+
+alter table pay_tb drop column pay_st;
+alter table pay_tb add(pay_dt date);
+alter table pay_tb add(pay_st enum('펀딩진행중', '펀딩마감'));
+
