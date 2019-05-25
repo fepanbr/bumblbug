@@ -1,4 +1,4 @@
-create table PJ_TB (
+﻿create table PJ_TB (
 	pj_idx int auto_increment primary key,
 	pj_title varchar(150) not null,
 	pj_short_title varchar(10) not null,
