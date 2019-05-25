@@ -125,17 +125,17 @@ create table PAY_INFO_TB (
 	owner_ph varchar(45) default null
 );
 
-alter table COMMENTS_TB add foreign key (c_b_idx) references NOTICE_TB (b_idx);
-alter table PRESENT_TB add foreign key (pj_p_idx) references PJ_TB (pj_idx);
-alter table ITEM_TB add foreign key (i_p_inclued) references PRESENT_TB (p_idx);
-alter table FUND_TB add foreign key (supmem_idx) references USER_TB (u_idx);
-alter table FUND_TB add foreign key (f_pj_idx) references PJ_TB (pj_idx);
+alter table COMMENTS_TB add foreign key (c_b_idx) references NOTICE_TB (b_idx) on delete cascade;
+alter table PRESENT_TB add foreign key (pj_p_idx) references PJ_TB (pj_idx) on delete cascade;
+alter table ITEM_TB add foreign key (i_p_inclued) references PRESENT_TB (p_idx) on delete cascade;
+alter table FUND_TB add foreign key (supmem_idx) references USER_TB (u_idx) on delete cascade;
+alter table FUND_TB add foreign key (f_pj_idx) references PJ_TB (pj_idx) on delete cascade;
 alter table FUND_TB add foreign key (f_p_idx) references PRESENT_TB (p_idx);
-alter table DEL_TB add foreign key (d_u_idx) references USER_TB (u_idx);
-alter table PAY_TB add foreign key (pay_f_idx) references FUND_TB (f_idx);
-alter table PAY_INFO_TB add foreign key (pay_u_idx) references USER_TB (u_idx);
-alter table PJ_TB add foreign key (pj_u_idx) references USER_TB (u_idx);
-alter table NOTICE_TB add foreign key (b_pj_idx) references PJ_TB (pj_idx);
+alter table DEL_TB add foreign key (d_u_idx) references USER_TB (u_idx) on delete cascade;
+alter table PAY_TB add foreign key (pay_f_idx) references FUND_TB (f_idx) on delete cascade;
+alter table PAY_INFO_TB add foreign key (pay_u_idx) references USER_TB (u_idx) on delete cascade;
+alter table PJ_TB add foreign key (pj_u_idx) references USER_TB (u_idx) on delete cascade;
+alter table NOTICE_TB add foreign key (b_pj_idx) references PJ_TB (pj_idx) on delete cascade;
 alter table fund_tb add foreign key(f_d_idx) references del_tb (d_idx);
 
 
@@ -168,4 +168,5 @@ create table temp_tb (
 alter table pay_tb drop column pay_st;
 alter table pay_tb add(pay_dt date);
 alter table pay_tb add(pay_st enum('펀딩진행중', '펀딩마감'));
+
 
