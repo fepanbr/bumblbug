@@ -1,4 +1,4 @@
-create table PJ_TB (
+﻿create table PJ_TB (
 	pj_idx int auto_increment primary key,
 	pj_title varchar(150) not null,
 	pj_short_title varchar(10) not null,
@@ -45,7 +45,7 @@ create table NOTICE_TB (
 	b_idx int auto_increment primary key,
 	b_time datetime default now(),
 	b_content longtext not null,
-	b_u int not null,
+	b_u_idx int not null,
 	b_pj_idx int not null
 );
 
