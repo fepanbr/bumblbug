@@ -1,6 +1,0 @@
-package Bean;
-
-public class TempBean {
-	private int tp_idx;
-
-}
