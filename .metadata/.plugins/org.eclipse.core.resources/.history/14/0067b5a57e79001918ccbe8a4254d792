@@ -1,0 +1,37 @@
+
+<%@page import="java.util.ArrayList"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	<jsp:useBean id="mMgr" class="Member.MemberMgr" />
+	
+	
+	<%
+	String a = mMgr.listRead();
+	asfdasfa
+	%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+
+<body>
+	<div class="wrap">
+	
+	</div>
+
+</body>
+<script>
+	var json = JSON.parse();
+	
+	functiona {
+		
+	}
+
+	
+
+</script>
+</html>

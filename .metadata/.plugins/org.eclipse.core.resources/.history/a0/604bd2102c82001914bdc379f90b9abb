@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="java.util.*, Bean.*"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<jsp:useBean id="UserDAO" class="DAO.MypageDAO" />
+
+<%
+	request.setCharacterEncoding("UTF-8");
+	String u_idx = (String) session.getAttribute("u_idx");
+	out.println(u_idx);
+	PayInfoBean payinfobean = UserDAO.getPayInfo(u_idx);
+	pageContext.setAttribute("bean", payinfobean);
+%>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>pay_info_idx: ${bean.pay_info_idx}</div>
+	<div>pay_u_idx: ${bean.pay_u_idx}</div>
+	<div>pay_info_means: ${bean.pay_info_means}</div>
+	<div>card_no:${bean.card_no}</div>
+	<div>card_valid:${bean.sns_con_tf}</div>
+
+</body>
+</html>

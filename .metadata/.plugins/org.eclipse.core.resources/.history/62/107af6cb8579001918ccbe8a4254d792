@@ -1,0 +1,55 @@
+
+<%@page import="org.json.simple.JSONArray"%>
+<%@page import="org.json.simple.parser.JSONParser"%>
+<%@page import="org.json.simple.JSONObject"%>
+<%@page import="java.util.ArrayList"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	<jsp:useBean id="mMgr" class="Member.MemberMgr" />
+	
+	
+	<%
+	String a = mMgr.listRead();
+	JSONParser jsonParser = new JSONParser();
+	JSONObject jsonObject = (JSONObject)jsonParser.parse(a);
+	JSONArray dataArray = (JSONArray)jsonObject.get("imgs");
+	for(int i=0; i<dataArray.size();i++){
+		JSONObject tmp = (JSONObject)dataArray.get(i);
+		//out.println(tmp.get("img"));
+		
+	%>
+	<script>
+	var bt =  document.getElementsByClassName('wrap')[0];
+    var div1 =  document.createElement('div');
+    div1.className +="cont";
+     var img = document.createElement('img')
+     img.setAttribute('src','<%=tmp.get("img")%>');
+     img.className +="a1";
+     div1.appendChild(img);
+     
+     bt.appendChild(div1);
+	
+	</script>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+
+<body>
+	<div class="wrap">
+	
+	</div>
+
+</body>
+<script>
+	
+	
+
+	
+
+</script>
+</html>

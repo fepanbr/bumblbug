@@ -1,0 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>a태그 form 전송</title>
+    <script>
+    
+    function content_view(idnum){
+         var f=document.contents;   //폼 name
+         myWin=window.open('','POP','location=no,status=no,toolbar=no,scrollbars=no,width=650,height=650');
+         f.id.value = idnum;    //POST방식으로 넘기고 싶은 값(hidden 변수에 값을 넣음)
+         f.action="XXXXXXX.php"; //이동할 페이지
+         f.target="POP";    //폼의 타겟 지정(위의 새창을 지정함)
+         f.method="post"; //POST방식
+         f.submit();
+}
+</script>
+
+
+    </script>
+  </head>
+  <body>
+    <!-- 페이지 전송 폼 -->
+    <form name="paging">
+    	<input type="hidden" name="content"/>
+    	<input type="hidden" name="index"/>
+    	<input type="hidden" name="cate"/>
+    </form>
+    <!-- a태그로 인수 전달 -->
+    <a href="javascript:goPage('look', 'observation', 1);">관람</a>
+  </body>
+</html>

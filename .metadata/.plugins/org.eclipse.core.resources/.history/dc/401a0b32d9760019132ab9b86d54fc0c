@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ page import = "java.sql.*" %>
+    
+    <%
+    String useridx = null;
+    String mem_userid = null;
+    Connection conn = null;
+	PreparedStatement pstmt = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+	request.setCharacterEncoding("UTF-8");
+	try{
+		
+		
+		useridx = (String)session.getAttribute("sIdx");
+		if(useridx ==null|| useridx.equals("")){
+			response.sendRedirect("member1_2.jsp");
+		}else{
+			Class.forName("org.mariadb.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/website", "root", "1234");
+			
+			String sql = "select mem_userid from member1 where mem_idx=?"
+		}
+		
+		
+	}catch(Exception e){
+		out.println("데이터베이스에 연결 할 수 없습니다.<br>");
+	}
+    
+    
+    %>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+</body>
+</html>
