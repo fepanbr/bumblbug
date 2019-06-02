@@ -1,0 +1,11 @@
+package Bean;
+
+public class PayInfoBean {
+	private int pay_info_idx;
+	private int pay_u_idx;
+	private String pay_info_means;
+	private String card_no;
+	private String card_valid;
+	private String owner_birth;
+
+}

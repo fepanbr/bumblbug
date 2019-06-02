@@ -1,0 +1,70 @@
+<%@page import="java.util.Enumeration"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%
+String uploadPath = request.getRealPath("/upload");
+out.println("절대경로 : " + uploadPath + "<br/>");
+
+int maxSize = 1024 * 1024 * 10;	// 파일 용량 10M
+
+String name = "";
+String subject = "";
+
+String fileName1 = "";		// DB컬럼에 저장될 이름
+String originalName1 = "";	// 실제 파일 이름
+long fileSize = 0;
+String fileType = "";
+
+MultipartRequest multi = null;
+
+try{
+	multi = new MultipartRequest(request,uploadPath,maxSize,"utf-8",new DefaultFileRenamePolicy());
+	// request, 업로드경로, 파일용량, 인코딩타입, 중복파일명에 대한 처리 정책
+	String useridx = (String)session.getAttribute("sIdx");
+	String sUserid = (String)session.getAttribute("sUserid");
+	String sName = (String)session.getAttribute("sName");
+	String b_title 		= multi.getParameter("b_title");
+	String b_email 		= multi.getParameter("b_email");
+	String b_content 	= multi.getParameter("b_content");
+	String b_ip			= request.getRemoteAddr();
+	
+	Enumeration files = multi.getFileNames();
+	// 전송된 모든 파일이름들을 저장
+
+	while(files.hasMoreElements()){
+		String file1 = (String)files.nextElement();	// 파일 input에 지정된 이름
+		originalName1 = multi.getOriginalFileName(file1); // 파일 이름
+		fileName1 = multi.getFilesystemName(file1);	 // 중복 정책에 따라 뒤에 1,2,3으로 이름을 변경하여 유니크하게 파일명을 생성
+		fileType = multi.getContentType(file1); // 파일타입
+		File file = multi.getFile(file1); // 실제 바이너리 파일
+		fileSize = file.length(); // 파일크기
+	}
+		
+	
+	
+}catch(Exception e){
+	e.printStackTrace();
+	out.println("데이터베이스에 연결 할 수 없습니다.<br>");
+}
+
+
+
+
+%>
+
+<!-- 업로드 된 파일을 확인하는 폼으로 이동 / 위에서 구한 데이터를 hidden 방식으로 전송 -->
+<html>
+<body>
+	<form action="check.jsp" method="post">
+		<input type="hidden" name="id" value="<%=id%>"> 
+		<input type="hidden" name="subject" value="<%=subject%>"> 
+		<input type="hidden" name="fileName" value="<%=fileName%>"> 
+		
+		<input type="hidden" name="orgfileName" value="<%=orgfileName%>">
+
+		<input type="submit" value="업로드 확인">
+	</form>
+</body>
+</html>

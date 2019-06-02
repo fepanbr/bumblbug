@@ -1,0 +1,11 @@
+ $(function () {
+	 
+	 if ($('input[name=sampleCheckbox]').is(":checked")) {
+		    $('input[name=sampleHidden]').val('Y');
+		} else {
+		    $('input[name=sampleHidden]').val('N');
+		}
+
+
+            
+        });

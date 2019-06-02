@@ -1,0 +1,83 @@
+
+<%@page import="org.json.simple.JSONArray"%>
+<%@page import="org.json.simple.parser.JSONParser"%>
+<%@page import="org.json.simple.JSONObject"%>
+<%@page import="java.util.ArrayList"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	<jsp:useBean id="mMgr" class="DAO.MemberDAO" />
+	
+	
+	
+	
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+        .wrap {
+            display: flex;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            width: 1080px;
+            height: 100%;
+            border: 2px solid black;
+            margin: 0 auto;
+            padding: 0 1rem;
+            overflow: hidden;
+            flex-wrap: wrap;
+
+        }
+
+        .cont {
+            /*flex: 1 0 20%;*/
+            border: 2px solid Red;
+            margin: 1em;
+            /* margin-right: 0; */
+            width:200px;
+        }
+        .a1{
+            width: 100%;
+            height: 180px;
+        }
+    </style>
+<title>Insert title here</title>
+</head>
+
+
+<body>
+	<div class="wrap">
+	
+	</div>
+
+</body>
+<%
+	String a = mMgr.listRead();
+	JSONParser jsonParser = new JSONParser();
+	JSONObject jsonObject = (JSONObject)jsonParser.parse(a);
+	JSONArray dataArray = (JSONArray)jsonObject.get("imgs");
+	for(int i=0; i<dataArray.size();i++){
+		JSONObject tmp = (JSONObject)dataArray.get(i);
+		//out.println(tmp.get("img"));
+		String data = tmp.get("img")+"";
+		
+	%>
+<script>
+	
+	var bt =  document.getElementsByClassName('wrap')[0];
+    var div1 =  document.createElement('div');
+    div1.className +="cont";
+     var img = document.createElement('img')
+     img.setAttribute('src','<%=data%>');
+     img.className +="a1";
+     div1.appendChild(img);
+     
+     bt.appendChild(div1);
+	
+	</script>
+	<%
+	
+	}%>
+</html>

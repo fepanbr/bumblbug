@@ -1,0 +1,51 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%
+	String userid = "";
+	String name = "";
+	
+	try {
+		name = (String) session.getAttribute("name");
+		userid = (String) session.getAttribute("id");
+		if (userid == null || userid.equals("")) {
+			response.sendRedirect("ex1.jsp");
+		} else {
+			Cookie[] cookies = request.getCookies();
+			int value = Integer.parseInt(cookies[0].getValue());
+			out.println(value + "번째");
+			++value;
+			String a = value+"";
+			cookies[0].setValue(a);
+			response.addCookie(cookies[0]);
+			
+		}
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>session 객체</title>
+</head>
+<body>
+	<p>로그인 되었습니다.</p>
+
+	<p>
+		환영합니다
+		<%=name%>님
+	</p>
+	<p>
+		아이디:
+		<%=userid%>님
+	</p>
+	<p>
+		<a href="ex1_2.jsp">새로고침
+	</p>
+
+
+
+</body>
+</html>

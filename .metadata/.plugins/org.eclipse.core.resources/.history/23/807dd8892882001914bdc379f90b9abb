@@ -1,0 +1,7 @@
+package Bean;
+
+public class PayInfoBean {
+	private int pay_info_idx;
+
+
+}

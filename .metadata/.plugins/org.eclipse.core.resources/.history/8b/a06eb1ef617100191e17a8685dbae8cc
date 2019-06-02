@@ -1,0 +1,45 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<% 
+	request.setCharacterEncoding("UTF-8");	//request:클라이언트가 서버로
+	String name = request.getParameter("name");	//김사과
+	String gender = request.getParameter("gender");	//2
+	String hp = request.getParameter("hp");
+	String hobby[] = request.getParameterValues("hobby");
+
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+		<h2>정보출력폼</h2>
+		<p>당신의 이름은 <%=name %>입니다.</p>
+	<p>
+	<%
+		if(gender.equals("1")){
+	%>
+		성별은 남자이며,
+	<%
+		}else{
+	%>
+		성별은 여자이며,
+	<%
+		}
+	%>
+	전화번호는<%=hp %> 입니다.
+	</p>
+	<p>취미는
+	<%
+		for(int i=0; i<hobby.length; i++){
+			out.println(hobby[i]+" ");
+		}
+	%>
+	</p>
+
+
+</body>
+</html>
