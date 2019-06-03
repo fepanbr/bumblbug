@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+    <title>jQuery Style</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-wrap {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            box-shadow: 0px 1px 2px 0px rgba(10, 10, 10, 0.1);
+
+
+        }
+
+        .header {
+            margin: 0 auto;
+            width: 80%;
+            height: 100px;
+            position: relative;
+        }
+
+        .hpName-wrap {
+            display: flex;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            align-items: center;
+            justify-content: center;
+            font-weight: bolder;
+            font-size: 30px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            height: 100%;
+            border: 1px solid black;
+        }
+
+        .flex {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .row {
+            display: flex;
+            border: 2px solid black;
+            height: 50px;
+        }
+
+        .left {
+            width: 25%;
+            height: 100%;
+            border-right: 2px solid black;
+            text-align: center;
+
+
+        }
+
+        .right {
+            width: 75%;
+            height: 100%;
+
+        }
+    </style>
+    <script>
+
+
+        $(function () {
+
+        });
+
+
+    </script>
+</head>
+
+<body>
+
+    <div class="header-wrap">
+        <div class="header">
+            <div class="hpName-wrap">프로젝트 승인 페이지</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="flex">
+            <div class="row">
+                <div class="left">
+                    <span>제목</span>
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <span>짧은제목</span>
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <span>이미지</span>
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <span>요약</span>
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <span>카테고리</span>
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <span>URL</span>
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <span>검색태그</span>
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <span>진행자 이름</span>
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <span>리더소개</span>
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <span>활동지역</span>
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <span>마감날짜</span>
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <span>소개영상</span>
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="left" id="story">
+                    <span>스토리</span>
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <span>요약</span>
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <span>요약</span>
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+</body>
+
+</html>
